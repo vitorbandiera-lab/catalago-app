@@ -9,14 +9,12 @@ class avaliacao:
         if self.comentario:
             texto += f' - "{self.comentario}"'
 
-        class obra:
-            tipo = "obra" # atributo de classe: cada subclasse sobrescreve
+        class filme(obra):
+            tipo = "filme" # atributo de classe: cada subclasse sobrescreve
 
-            def __init__(self, titulo, ano, genero):
-                self.titulo = titulo
-                self.ano = ano
-                self.genero = genero
-                self.avaliacoes =[]
+            def __init__(self, titulo, ano, genero, duracao_min):
+                super().__init(titulo,ano,genero)
+                self.duracao_min = duracao_min
 
             def adicionar_avaliacoes(self, avaliacao):
                 self.avaliacoes.append(avaliacao)
@@ -46,6 +44,10 @@ def main():
     obra.adicionar_avaliacao(avaliacao("bruno", 7))  
     print(obra)
     print("media: ", obra.media()) 
+
+    filme = filme("matrix", 199, "ficçao cientifica", 136)
+    filme.adicionar_avaliacao(avaliacao("carla", 10))
+    print(filme)
 
 if __name__ == "__main__":
     main()
